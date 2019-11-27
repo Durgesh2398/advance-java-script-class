@@ -30,3 +30,75 @@ function exampleFunction() {
 
 console.log("Outside function");
 console.log(x);
+
+
+//-------------------------------------------------
+var name = 'Hammad';
+
+console.log(name); // logs 'Hammad'
+
+function logName() {
+    console.log(name); // 'name' is accessible here and everywhere else
+}
+
+logName(); // logs 'Hammad'
+
+//-------------------------------------------------
+if (true) {
+    // this 'if' conditional block doesn't create a new scope
+    var name = 'Hammad'; // name is still in the global scope
+}
+
+console.log(name); // logs 'Hammad'
+
+
+//-------------------------------------------------
+
+if (true) {
+    // this 'if' conditional block doesn't create a scope
+
+    // name is in the global scope because of the 'var' keyword
+    var name = 'Hammad';
+    // likes is in the local scope because of the 'let' keyword
+    let likes = 'Coding';
+    // skills is in the local scope because of the 'const' keyword
+    const skills = 'JavaScript and PHP';
+}
+
+console.log(name); // logs 'Hammad'
+console.log(likes); // Uncaught ReferenceError: likes is not defined
+console.log(skills); // Uncaught ReferenceError: skills is not defined
+
+
+
+//context--------------------------------------------------
+
+// logs: Window {speechSynthesis: SpeechSynthesis, caches: CacheStorage, localStorage: Storage…}
+console.log(this);
+
+function logFunction() {
+    console.log(this);
+}
+// logs: Window {speechSynthesis: SpeechSynthesis, caches: CacheStorage, localStorage: Storage…}
+// because logFunction() is not a property of an object
+logFunction(); 
+
+
+//Lexcial----------------------------------------------------
+
+function grandfather() {
+    var name = 'Hammad';
+    console.log(name);    
+    // likes is not accessible here
+    function parent() {
+        // name is accessible here
+        // likes is not accessible here
+        console.log(name);
+        function child() {
+            // Innermost level of the scope chain
+            // name is also accessible here
+            var likes = 'Coding';
+        }
+    }
+}
+grandfather();

@@ -1,3 +1,3 @@
 # advance-java-script
 
-# all javascript functions
+# all advance javascript functions
